@@ -18,9 +18,11 @@ const prompts = () => {
                 }
             }
         },
-    ]
+    ])
 
-    )
+    
 };
+
+
 
 prompts();
