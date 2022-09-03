@@ -1,0 +1,25 @@
+{
+  "name": "team-registry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeeveRW11/team-registry.git"
+  },
+  "author": "Keeve Whyte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeeveRW11/team-registry/issues"
+  },
+  "homepage": "https://github.com/KeeveRW11/team-registry#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.0.1"
+  }
+}
