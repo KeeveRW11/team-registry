@@ -1,9 +1,17 @@
-module.exports = templateData  => {
-    console.log(templateData);
-    const { projects, about, ...header } = templateData;
-  
-  
-    return `  
+const generateManagerCard = function (manager) {
+  return``
+};
+
+const generateEngineerCard = function (engineer) {
+  return``
+};
+
+const generateInternCard = function (intern) {
+  return``
+};
+//Need to create function to push array to the page
+const generateTeamRegistry = function (employeeCards) {
+  return `  
     <!DOCTYPE html> 
     <html lang="en"> 
     <head>
@@ -14,9 +22,7 @@ module.exports = templateData  => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
       <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    </head>
-  
-      
+    </head>  
     <body>
       <header>
         <div class="container flex-row justify-space-between align-center py-3">
@@ -36,5 +42,6 @@ module.exports = templateData  => {
       </footer>
     </body>
     </html>
-    `;  
-  };
+  `;  
+};
+module.exports = generateSite; 

@@ -1,11 +1,13 @@
+const generateSite = require('./src/page-template')
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
+
 const fs = require('fs');
 const { writeFile } = require('fs/promises');
 const inquirer = require('inquirer');
 
-const teamArray = [];
+const employeeArray = [];
 
 const promptsManager = () => {
     return inquirer.prompt(
@@ -64,10 +66,10 @@ const promptsManager = () => {
         }       
     ])
     .then(managerInfo => {
-        const { managerName, managerId, managerEmail, office } = managerInfo;
-        const manager = new Manager (managerName, managerId, managerEmail, office);
+        const { name, id, email, officeNumber } = managerInfo;
+        const manager = new Manager (name, id, email, officeNumber);
 
-        teamArray.push(manager);
+        employeeArray.push(manager);
         console.log(manager);
     })
 };
@@ -161,18 +163,51 @@ const promptsEmployee = () => {
         }
     ])
     .then(employeeInfo => {
-        const { employeeName, employeeId, employeeEmail, employeeGithub, internSchool, addAnotherEmployee} = employeeInfo;
-        const employee;
+        let { name, id, email, role, github, school, addAnotherEmployee} = employeeInfo;
+        let employee;
 
-        
+        if (role === "Engineer") {
+            employee = new Engineer (name, id, email, github)
+
+            console.log(employee);
+        } else if (role = "Intern") {
+            
+            employee = new Intern (name, id, email, school)
+    
+            console.log(employee);
+        }
+
+        employeeArray.push(employee);
+
+        if (addAnotherEmployee) {
+            return promptsEmployee(employeeArray);
+        } else {
+            return employeeArray;
+        }
+
+
     })
-}
-/*
-function pageGenerator () {
-    console.log("Team created!")
+};
 
-    fs.writeFileSync(outputPath, generateTeam(teamArray), "UTF-8")
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("The team registry is now complete! Please see index.html")
+        }
+    })
+}; 
 
-}*/
 promptsManager()
-    .then(promptsEmployee);
+    .then(promptsEmployee)
+    .then(employeeArray => {
+        return generateSite(employeeArray);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    });
