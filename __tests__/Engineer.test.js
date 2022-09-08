@@ -10,3 +10,10 @@ test('creates a engineer object', () => {
    
     
 });
+
+
+test('gets role of employee', () => {
+    const engineer = new Engineer('James Bond', 1, 'james.bond@gmail.com','github.com/jamesBond007');
+
+    expect(engineer.getRole()).toEqual("Engineer");
+}); 

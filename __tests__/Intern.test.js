@@ -10,3 +10,9 @@ test('creates a intern object', () => {
    
     
 });
+
+test('gets role of employee', () => {
+    const intern = new Intern('James Bond', 1, 'james.bond@gmail.com',1);
+
+    expect(intern.getRole()).toEqual("Intern");
+});

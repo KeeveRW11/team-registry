@@ -14,7 +14,7 @@ const promptsManager = () => {
     [
         {
             type: 'input',
-            name: 'managerName',
+            name: 'name',
             message: 'What is the name of the manager? ()Required',
             validate: managerNameInput => {
                 if (managerNameInput) {
@@ -27,7 +27,7 @@ const promptsManager = () => {
         },
         {
             type: 'input',
-            name: 'managerId',
+            name: 'id',
             message: 'Manager,please provide your ID number to continue ()Required',
             validate: manageIDInput => {
                 if (manageIDInput) {
@@ -40,7 +40,7 @@ const promptsManager = () => {
         },
         {
             type: 'input',
-            name: 'managerEmail',
+            name: 'email',
             message: 'Manager,please provide your email address to continue ()Required',
             validate: managerEmailInput => {
                 if (managerEmailInput) {
@@ -66,8 +66,8 @@ const promptsManager = () => {
         }       
     ])
     .then(managerInfo => {
-        const { name, id, email, officeNumber } = managerInfo;
-        const manager = new Manager (name, id, email, officeNumber);
+        const { name, id, email, office } = managerInfo;
+        const manager = new Manager (name, id, email, office);
 
         employeeArray.push(manager);
         console.log(manager);
@@ -90,7 +90,7 @@ const promptsEmployee = () => {
         },
         {
             type: 'input',
-            name: 'employeeName',
+            name: 'name',
             message: 'What is the name of the employee? ()Required',
             validate: employeeNameInput => {
                 if (employeeNameInput) {
@@ -103,7 +103,7 @@ const promptsEmployee = () => {
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'id',
             message: 'Manager,please provide the ID number for the employee to continue ()Required',
             validate: employeeIdInput => {
                 if (employeeIdInput) {
@@ -116,7 +116,7 @@ const promptsEmployee = () => {
         },
         {
             type: 'input',
-            name: 'employeeEmail',
+            name: 'email',
             message: 'Manager,please provide the email address for the employee to continue ()Required',
             validate: employeeEmailInput => {
                 if (employeeEmailInput) {
@@ -129,7 +129,7 @@ const promptsEmployee = () => {
         },
         {
             type: 'input',
-            name: 'employeeGithub',
+            name: 'github',
             message: 'Kindly provide the Github profile link for the employee to continue ()Required',
             when: (input) => input.role === "Engineer",
             validate: employeeGithubInput => {
@@ -143,7 +143,7 @@ const promptsEmployee = () => {
         },
         {
             type: 'input',
-            name: 'internSchool',
+            name: 'school',
             message: 'Please provide the name of the school the intern attended. ()Required',
             when: (input) => input.role === "Intern",
             validate: employeeSchool => {

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/KeeveRW11/team-registry#readme",
   "dependencies": {
+    "bootstrap-icons": "^1.9.1",
     "inquirer": "^8.2.4"
   },
   "devDependencies": {
